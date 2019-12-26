@@ -1,0 +1,21 @@
+#!/bin/bash
+
+test_number=1
+t() {
+	echo Test $test_number $@
+}
+
+pass() {
+	echo Test $test_number OK
+	test_number=$(($test_number + 1))
+}
+
+fail() {
+	echo Test $test_number FAILED
+	exit 1
+}
+
+t program should run
+./hello >/dev/null 2>&1 && pass || fail
+
+echo ALL TESTS PASSED
